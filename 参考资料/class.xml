@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<students id="001" >
+    <stu id="2024001" gender="0">
+        <name>王五</name>
+        <age>23</age>
+    </stu>
+    <stu id="2024002" gender="1">
+        <name>李四</name>
+        <age>24</age>
+    </stu>
+</students>

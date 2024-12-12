@@ -1,0 +1,79 @@
+MyBatis
+  是一款优秀的持久层框架
+  用于简化JDBC的开发
+  本来是apache的开源项目 iBatis 
+  2010年由apache迁移到了google code上 改名MyBatis
+  2013年迁移到了github上
+持久层框架
+  controller 表现层 负责处理用户请求和响应
+  service    业务层 提供业务逻辑服务 更加关注具体执行过程 但是如果做数据库操作还要用到dao层
+  dao        持久层 用来操作数据库 数据访问层（dao层），是用来操作数据库的
+  数据库
+  框架 
+    是一个半成品软件 是一套可重用的 通用的 软件基础代码模型 在这个基础上开发可以更加高效、规范、可扩展 参考vue-project
+MyBatis的映射文件的作用
+
+
+SpringBoot  
+  spring框架的核心功能是什么
+  创建项目 
+      组件与示例
+        MyBatis Framework
+        MySQL Driver 
+        Lombok
+          Lombok是一个实用的Java类库，可以通过简单的注解来简化和消除一些必须有但显得很臃肿的Java代码。
+          提高开发效率
+  注解
+    @Autowired实现依赖注入
+    @Select 查询数据
+    @Controller 处理http请求
+    @RequestMapping
+
+  配置文件 application.properties
+    #配置数据库相关的内容
+    #驱动类名称
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    #数据库连接的url
+    spring.datasource.url=jdbc:mysql://localhost:3306/briup
+    #连接数据库的用户名
+    spring.datasource.username=briup
+    #连接数据库的密码
+    spring.datasource.password=briup
+  写sql语句
+    创建一个包 mapper 在mapper下创建一个 UserMapper 这是一个持久层的接口
+    MyBatis的持久层一般都叫xxxMapper
+
+
+  连接池
+    默认使用：追光者 hikari 
+    德鲁伊 阿里巴巴旗下开源项目 Druid
+    切换连接池
+  日志显示
+    配置文件 
+      application.properties 
+      #指定mybatis输出日志的位置, 输出控制台
+      mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+
+  在 <select> 语句中，这里使用的是resultMap属性，而不是resultType属性
+  resultType 和 resultMap 是不能同时存在的
+  resultMap 可以实现继承，用于映射查询结果到Java对象
+
+  一对多和一对一映射（含嵌套结果、嵌套查询），实现思路是类似的
+  具体使用时，一对一使用resultMap中的子标签 <association > 实现功能
+  <association property="category" resultMap="CategoryResult"/>
+  <association property="category" column="category_id" select="findById"/>
+  具体使用时，一对多使用resultMap中的子标签 <collection> 实现功能
+  <collection property="categories" resultMap="Category2Result"/>
+  <collection property="categories" column="id" select="findAllByParentId"/>
+
+  <discriminator>
+    根据查询结果中的某个字段值决定使用哪个<resultMap>
+  <include>
+    定义和引用可重用的SQL片段
+
+HTTP协议
+  get和post的区别
+  500
+
+jdbc连接数据库
+数据库索引
